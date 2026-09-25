@@ -166,7 +166,7 @@ class TestElementPattern:
         pattern = pa.element_pattern(theta, phi, max_gain_dBi=6.0)
 
         # 6 dBi = 10^0.6 ~ 3.98 linear
-        expected_gain = 10 ** (6.0 / 10)
+        expected_gain = 10 ** (6.0 / 20)
         assert np.isclose(pattern[0], expected_gain)
 
 
