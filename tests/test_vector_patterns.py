@@ -96,7 +96,7 @@ class TestElementFactories:
         phi = np.deg2rad(np.linspace(0, 340, 20))
         E_theta, E_phi = f(theta, phi)
         power = np.abs(E_theta) ** 2 + np.abs(E_phi) ** 2
-        scalar = pa.element_pattern(theta, phi, cos_exp_theta=2 * q)
+        scalar = np.abs(pa.element_pattern(theta, phi, cos_exp_theta=2 * q))**2
         assert np.allclose(power, scalar, atol=1e-12)
 
     def test_cos_q_gain_scale(self):
@@ -339,7 +339,7 @@ class TestConformalVector:
         )
         af_cos = pa.array_factor_conformal(
             np.array([0.3]), np.array([0.1]), cyl, w, k,
-            element_pattern_func=pa.element_pattern, cos_exp_theta=1.0,
+            element_pattern_func=pa.element_pattern, cos_exp_theta=2.0,
         )
         assert np.allclose(af_default, af_cos, atol=1e-9)
 
