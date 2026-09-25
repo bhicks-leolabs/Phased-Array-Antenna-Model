@@ -335,13 +335,13 @@ def element_pattern(
         )
 
     # Convert max gain to linear
-    max_gain_linear = 10 ** (max_gain_dBi / 10)
+    max_gain_linear = 10 ** (max_gain_dBi / 20)
 
     # Raised cosine pattern (only valid for forward hemisphere)
     cos_theta = np.cos(theta)
     pattern = np.where(
         cos_theta > 0,
-        max_gain_linear * (cos_theta ** cos_exp_theta),
+        max_gain_linear * (cos_theta ** (cos_exp_theta/2.0)),
         0.0
     )
 
